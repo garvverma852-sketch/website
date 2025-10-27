@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developed India - Build Yathan</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f5f0;
+      scroll-behavior: smooth; /* enables smooth scrolling */
+    }
+
+    /* HEADER */
+    header {
+      background-color: white;
+      color: #1b5e20;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    nav a {
+      color: #1b5e20;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 14px;
+      font-weight: 550;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: black;
+    }
+
+    /* DROPDOWN */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropbtn {
+      color: #1b5e20;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 14px;
+      font-weight: 550;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      border-radius: 10px;
+      overflow: hidden;
+      z-index: 100;
+    }
+
+    .dropdown-content a {
+      color: #1b5e20;
+      padding: 12px 20px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f5f5f0;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* HERO SECTION */
+    .image-container {
+      position: relative;
+      width: 100%;
+      height: 650px;
+      overflow: hidden;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-container h1 {
+      position: absolute;
+      top: 35%;
+      left: 25%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 60px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .image-container h3 {
+      position: absolute;
+      top: 52%;
+      left: 22.5%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 20px;
+      font-weight: 400;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    /* BUTTONS */
+    .image-container button {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      border: none;
+      padding: 14px 34px 14px 22px;
+      font-size: 15px;
+      border-radius: 25px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    }
+
+    .b1 {
+      top: 65%;
+      left: 15.5%;
+      background-color: #1b5e20;
+      color: white;
+    }
+
+    .b2 {
+      top: 65%;
+      left: 29.5%;
+      background-color: #ffeb3b;
+      color: #1b5e20;
+    }
+
+    .image-container button:hover {
+      background-color: white;
+      transform: translate(-50%, -50%) scale(1.05);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+      color: black;
+    }
+
+    .image-container button::after {
+      content: "→";
+      font-size: 20px;
+      opacity: 0;
+      transform: translateX(-5px);
+      transition: all 0.3s ease;
+    }
+
+    .image-container button:hover::after {
+      opacity: 1;
+      transform: translateX(5px);
+    }
+
+    /* SECTION TITLE */
+    section {
+      padding: 80px 100px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 36px;
+      color: #1b5e20;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    section h2::after {
+      content: '';
+      width: 80px;
+      height: 4px;
+      background: #ffeb3b;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    /* CARD SECTION */
+    .card-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    a.card-link {
+      text-decoration: none;
+      color: inherit;
+      width: 23%;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 15px;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      color: #1b5e20;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .card-content p {
+      color: #555;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1200px) {
+      a.card-link {
+        width: 48%;
+      }
+      .card-container {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 768px) {
+      a.card-link {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      section {
+        padding: 50px 20px;
+      }
+      .image-container h1 {
+        font-size: 36px;
+      }
+      .image-container h3 {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h2>Prakriti Kala</h2>
+    <nav>
+      <a href="#initiatives">Our Creations</a> <!-- Smooth scroll -->
+      
+      <!-- Activity Videos Dropdown -->
+      <div class="dropdown">
+        <a href="#" class="dropbtn">Activity Videos ▼</a>
+        <div class="dropdown-content">
+          <a href="C:\Users\Garv\Desktop\Prakriti Kala\HTML\HandEmbroidery.html">Hand Embroidery</a>
+          <a href="C:\Users\Garv\Desktop\Prakriti Kala\HTML\TieAndDye.html">Tie & Dye</a>
+          <a href="C:\Users\Garv\Desktop\Prakriti Kala\HTML\ScrunchieMaking.html">Scrunchie Making</a>
+          <a href="C:\Users\Garv\Desktop\Prakriti Kala\HTML\LeavesPainting.html">Leaf Painting</a>
+        </div>
+      </div>
+
+      <a href="AboutUs.html">About Us</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <div class="image-container">
+    <img src="C:\Users\Garv\Downloads\ChatGPT Image Oct 26, 2025, 04_59_46 AM.png" alt="Background Image">
+    <h1>Developed India - <br>Build Yathan</h1>
+    <h3>A Vision for a Developed, Sustainable India</h3>
+    <button class="b1" onclick="document.getElementById('initiatives').scrollIntoView({behavior:'smooth'})">Explore Projects</button>
+    <button class="b2">Watch Videos</button>
+  </div>
+
+  <!-- INITIATIVES SECTION -->
+  <section id="initiatives">
+    <h2>Our Initiatives</h2>
+    <div class="card-container">
+
+      <a href="HandEmbroidery.html" class="card-link">
+        <div class="card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9r0lQ4JG8SZIyDekvUoSb0wcYe-Fuzu0MvQ&s" alt="Hand Embroidery">
+          <div class="card-content">
+            <h3>Hand Embroidery</h3>
+            <p>Beautiful designs created by hand with intricate stitching and colorful threads.</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="TieAndDye.html" class="card-link">
+        <div class="card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGNmpEuUp-XDMLe10vAb-hxXS9wLC_DAKG5A&s" alt="Tie & Dye">
+          <div class="card-content">
+            <h3>Tie & Dye</h3>
+            <p>Eco-friendly tie & dye using natural products for sustainable fashion.</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="ScrunchieMaking.html" class="card-link">
+        <div class="card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuEN_MhLXBqaP5bmkZPKNA0RBnkfvUVRZg3w&s" alt="Scrunchie Making">
+          <div class="card-content">
+            <h3>Scrunchie Making</h3>
+            <p>Handmade scrunchies made from soft fabrics, perfect for gifts.</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="LeavesPainting.html" class="card-link">
+        <div class="card">
+          <img src="https://pittsburghkids.org/wp-content/smush-webp/2021/09/Natural-Dye-scaled.jpeg.webp" alt="Leaf Painting">
+          <div class="card-content">
+            <h3>Leaf Painting</h3>
+            <p>Creative painting using leaves to bring nature into art.</p>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+</body>
+</html>

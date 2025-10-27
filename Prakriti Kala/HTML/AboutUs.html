@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Prakriti Kala</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* --- GLOBAL STYLES --- */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #fffaf0; /* soft pastel background */
+      color: #1b5e20;
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 15px;
+    }
+
+    /* --- HEADER --- */
+    header {
+      background-color: rgba(255,255,255,0.95);
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      border-bottom: 3px solid #ffeb3b;
+    }
+    header h2 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      color: #1b5e20;
+    }
+    nav a {
+      margin-left: 25px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      display: block;
+      height: 3px;
+      width: 0;
+      background: #ffeb3b;
+      transition: width 0.3s;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      border-radius: 2px;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    nav a:hover {
+      color: #ff6f61;
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #ffe8f0, #fffaf0);
+    }
+    .hero h1 {
+      font-size: 52px;
+      margin-bottom: 15px;
+      color: #1b5e20;
+    }
+    .hero p {
+      font-size: 22px;
+      max-width: 700px;
+      margin: 0 auto;
+      color: #333;
+    }
+
+    /* --- SECTION STYLES --- */
+    section {
+      padding: 60px 50px;
+      text-align: center;
+    }
+    section h2 {
+      font-size: 40px;
+      margin-bottom: 40px;
+      background: linear-gradient(90deg, #ff6f91, #ffeb3b, #1e90ff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 25px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      padding: 30px 20px;
+      width: 280px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    }
+    .card img {
+      height: 180px;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #1b5e20;
+    }
+    .card p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      background: #1b5e20;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+      header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 30px;
+      }
+      .hero h1 {
+        font-size: 36px;
+      }
+      .hero p {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h2>Prakriti Kala</h2>
+    <nav>
+      <a href="C:\Users\Garv\Desktop\Prakriti Kala\HTML\HomePage.html">Home</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>About Prakriti Kala</h1>
+    <p>We are dedicated to empowering girls through the art of creativity. Our programs give them the skills, confidence, and community they need to flourish.</p>
+  </section>
+
+  <!-- OUR MISSION -->
+  <section>
+    <h2>Our Mission</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Creative Workshops</h3>
+        <p>Hands-on art sessions where girls explore painting, embroidery, tie-dye, and more.</p>
+      </div>
+      <div class="card">
+        <h3>Collaborative Projects</h3>
+        <p>We encourage teamwork through group projects that strengthen community bonds.</p>
+      </div>
+      <div class="card">
+        <h3>Exhibitions</h3>
+        <p>Girls get the chance to showcase their creations and gain recognition for their talents.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIRL EMPOWERMENT / COMMUNITY -->
+  <section>
+    <h2>Empowering Girls Through Creativity</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="C:\Users\Garv\Documents\GirlsCommunity1.jpg" alt="Confidence">
+        <h3>Boosting Confidence</h3>
+        <p>Our girls gain self-esteem, leadership skills, and pride in their creations through hands-on art activities.</p>
+      </div>
+      <div class="card">
+        <img src="C:\Users\Garv\Documents\GirlsCommunity2.jpg" alt="Collaboration">
+        <h3>Fostering Collaboration</h3>
+        <p>Team-based projects allow girls to work together, build friendships, and strengthen community bonds.</p>
+      </div>
+      <div class="card">
+        <img src="C:\Users\Garv\Documents\GirlsCommunity3.jpg" alt="Skills Development">
+        <h3>Developing Skills</h3>
+        <p>Girls learn practical and creative skills, from painting and embroidery to leadership and problem-solving.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2025 Prakriti Kala. All rights reserved.
+  </footer>
+
+</body>
+</html>

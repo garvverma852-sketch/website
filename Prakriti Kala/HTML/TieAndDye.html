@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tie And Dye - Prakriti Kala</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* --- GLOBAL STYLES --- */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #e8f0ff; /* light bluish background */
+      color: #1b5e20;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* --- HEADER --- */
+    header {
+      background-color: rgba(255,255,255,0.95);
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      border-bottom: 3px solid #ffeb3b;
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 700;
+      color: #1b5e20;
+    }
+
+    nav a {
+      color: #1b5e20;
+      margin-left: 25px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      display: block;
+      height: 3px;
+      width: 0;
+      background: #ffeb3b;
+      transition: width 0.3s;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      border-radius: 2px;
+    }
+
+    nav a:hover {
+      color: #ff6f61;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* --- HERO SECTION --- */
+    .project-hero {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      overflow: hidden;
+      border-radius: 0 0 50% 50% / 0 0 10% 10%;
+      margin-bottom: 50px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    .project-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      text-shadow: 2px 2px 15px rgba(0,0,0,0.7);
+    }
+
+    .hero-overlay h1 {
+      font-size: 52px;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, #1e90ff, #ffeb3b); /* bluish → yellow */
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-overlay p {
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    /* --- GALLERY SECTION --- */
+    .project-gallery {
+      padding: 60px 50px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 30px;
+      margin: 0 50px 50px 50px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      position: relative;
+    }
+
+    .project-gallery h2 {
+      font-size: 40px;
+      margin-bottom: 40px;
+      display: inline-block;
+      position: relative;
+      background: linear-gradient(90deg, #1e90ff, #ffeb3b); /* bluish → yellow */
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    /* --- VIDEO THUMBNAILS --- */
+    .video-container {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .video-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.65);
+      transition: transform 0.3s;
+    }
+
+    .video-container:hover video {
+      transform: scale(1.05);
+    }
+
+    .video-container .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0,0,0,0.4);
+      color: #ffeb3b;
+      font-size: 24px;
+      font-weight: bold;
+      opacity: 0;
+      text-shadow: 2px 2px 6px black;
+      transition: opacity 0.3s;
+    }
+
+    .video-container:hover .overlay {
+      opacity: 1;
+    }
+
+    /* --- BACK BUTTON --- */
+    .back-btn {
+      display: inline-block;
+      margin: 50px auto 30px;
+      padding: 14px 30px;
+      background-color: #1b5e20;
+      color: white;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .back-btn:hover {
+      background-color: #ffeb3b;
+      color: #1b5e20;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    /* --- LIGHTBOX MODAL --- */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .lightbox video {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 15px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.7);
+    }
+
+    .lightbox .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 32px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .lightbox .close-btn:hover {
+      color: #ffeb3b;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .video-container {
+        width: 90%;
+        height: auto;
+      }
+      .hero-overlay h1 {
+        font-size: 36px;
+      }
+      .hero-overlay p {
+        font-size: 18px;
+      }
+      header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h2>Prakriti Kala</h2>
+    <nav>
+      <a href="C:\Users\Garv\Desktop\Prakriti Kala\HTML\HomePage.html">Home</a>
+      <a href="C:\Users\Garv\Desktop\Prakriti Kala\HTML\AboutUs.html">About Us</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="project-hero">
+    <img src="C:\Users\Garv\Documents\TieAnDye.jpg" alt="Tie And Dye">
+    <div class="hero-overlay">
+      <h1>Tie And Dye</h1>
+      <p>Intricate designs created with love and care</p>
+    </div>
+  </section>
+
+  <!-- GALLERY SECTION -->
+  <section class="project-gallery">
+    <h2>Our Creations</h2>
+    <div class="gallery">
+      <div class="video-container" onclick="openLightbox('C:\\Users\\Garv\\Documents\\TieAndDye1.mp4')">
+        <video muted loop>
+          <source src="C:\\Users\\Garv\\Documents\\TieAndDye1.mp4" type="video/mp4">
+        </video>
+        <div class="overlay">Click to Watch</div>
+      </div>
+
+      <div class="video-container" onclick="openLightbox('C:\\Users\\Garv\\Documents\\TieAndDye2.mp4')">
+        <video muted loop>
+          <source src="C:\\Users\\Garv\\Documents\\TieAndDye2.mp4" type="video/mp4">
+        </video>
+        <div class="overlay">Click to Watch</div>
+      </div>
+
+      <div class="video-container" onclick="openLightbox('C:\\Users\\Garv\\Documents\\TieAndDye3.mp4')">
+        <video muted loop>
+          <source src="C:\\Users\\Garv\\Documents\\TieAndDye3.mp4" type="video/mp4">
+        </video>
+        <div class="overlay">Click to Watch</div>
+      </div>
+
+      <div class="video-container" onclick="openLightbox('C:\\Users\\Garv\\Documents\\TieAndDye4.mp4')">
+        <video muted loop>
+          <source src="C:\\Users\\Garv\\Documents\\TieAndDye4.mp4" type="video/mp4">
+        </video>
+        <div class="overlay">Click to Watch</div>
+      </div>
+    </div>
+
+    <a class="back-btn" href="C:\Users\Garv\Desktop\Prakriti Kala\HTML\HomePage.html">← Back to Home</a>
+  </section>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="lightbox" id="lightbox">
+    <span class="close-btn" onclick="closeLightbox()">×</span>
+    <video id="lightbox-video" controls autoplay></video>
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      const lightbox = document.getElementById('lightbox');
+      const video = document.getElementById('lightbox-video');
+      video.src = src;
+      lightbox.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      const video = document.getElementById('lightbox-video');
+      video.pause();
+      video.src = '';
+      lightbox.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  </script>
+
+</body>
+</html>
